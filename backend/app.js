@@ -8,7 +8,7 @@ const buyerRoutes = require('./routes/buyerRoutes');
 const { getSecret } = require('./config');
 const AWS = require('aws-sdk');
 const storeModel = require('./model/StoreModel');
-const userModel = require('./model/USerModel');
+const userModel = require('./model/UserModel');
 const authService = require("./service/AuthService");
 
 const app = express();

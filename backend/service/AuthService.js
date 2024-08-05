@@ -1,7 +1,7 @@
 // services/authService.js
 const AWS = require('aws-sdk');
 const jwt = require('jsonwebtoken');
-const { getUserByEmail, createUser } = require('../model/USerModel');
+const { getUserByEmail, createUser } = require('../model/UserModel');
 const config = require('../config');
 
 let cognito;
