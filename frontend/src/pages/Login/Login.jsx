@@ -87,7 +87,7 @@ function Login() {
             <hr className="text-muted my-0" />
             <div className="text-center p-3">
               Don&lsquo;t have an account?{" "}
-              <a className="text-decoration fw-medium" style={{color: "#1A2529"}}>Register</a>
+              <a className="text-decoration fw-medium" style={{color: "#1A2529"}} href="/register">Register</a>
             </div>
           </div>
         </div>

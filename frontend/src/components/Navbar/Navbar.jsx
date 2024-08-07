@@ -19,18 +19,18 @@ const NavBar = () => {
     navigate("/login");
   };
 
-  // const getRole = () => {
-  //   const storedRole = localStorage.getItem("role");
-  //   if (!storedRole) {
-  //     navigate("/login");
-  //   } else {
-  //     setRole(storedRole);
-  //   }
-  // };
+  const getRole = () => {
+    const storedRole = localStorage.getItem("token");
+    if (!storedRole) {
+      navigate("/login");
+    } else {
+      setRole(storedRole);
+    }
+  };
 
-  // useEffect(() => {
-  //   getRole();
-  // }, []);
+  useEffect(() => {
+    getRole();
+  }, []);
 
   return (
     <nav className="navbar">
@@ -45,16 +45,16 @@ const NavBar = () => {
               style={{backgroundColor: "white", borderRadius: "8px", paddingLeft: "15px", paddingRight: "15px", paddingTop: '5px', paddingBottom: '5px'}}
               onClick={() => navigate("/login")}
             >
-              Login
+              {localStorage.getItem("token") ? "Logout" : "Login"}
             </button>
           </p>
           <p>
-            <button
+            {/* <button
               style={{backgroundColor: "white", borderRadius: "8px", paddingLeft: "15px", paddingRight: "15px", paddingTop: '5px', paddingBottom: '5px'}}
               onClick={() => navigate("/create-store")}
             >
               Create Store
-            </button>
+            </button> */}
           </p>
       </div>
     

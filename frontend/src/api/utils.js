@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const API_BASE_URL = 'http://Quikbuy-backend-lb-2123908312.us-east-1.elb.amazonaws.com:8000/api';
+// const API_BASE_URL = 'http://localhost:8000/api';
+
 
 // Create an instance of Axios with base URL and default headers
 const api = axios.create({

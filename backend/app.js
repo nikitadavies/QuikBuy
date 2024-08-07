@@ -10,6 +10,7 @@ const AWS = require('aws-sdk');
 const storeModel = require('./model/StoreModel');
 const userModel = require('./model/UserModel');
 const authService = require("./service/AuthService");
+const productModel = require("./model/ProductModel");
 
 const app = express();
  // Enable CORS
@@ -20,6 +21,7 @@ const initializeApp = async () => {
     const secrets = await getSecret('quikbuy-secrets'); 
  
     const { accessKeyId, secretAccessKey, sessionToken,  clientId, bucketName, region } = secrets;
+    console.log(secrets);
   
       // Configure AWS SDK with retrieved secrets
       AWS.config.update({
@@ -37,13 +39,14 @@ const initializeApp = async () => {
 storeModel.init({ s3, docClient });
 userModel.init({  docClient });
 authService.init({cognito, clientId});
+productModel.init({s3, docClient});
 
 
     // Your application setup (middlewares, routes, etc.)
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    app.use(bodyParser.json({ limit: '50mb' }));
-    app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));    
+    app.use(bodyParser.json({ limit: '500mb' }));
+    app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));    
 
     // Define routes
     app.use('/api/auth', authRoutes);

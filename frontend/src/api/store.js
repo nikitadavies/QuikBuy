@@ -9,3 +9,12 @@ export async function createStore(payload) {
       throw error;
     }
   }
+
+  export async function getStores() {
+    try {
+      const response = await api.get("/seller/store");
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }

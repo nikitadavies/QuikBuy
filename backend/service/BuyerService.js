@@ -1,6 +1,6 @@
 // services/buyerService.js
 const { getStores } = require('../model/StoreModel');
-const { getProductsByStoreId } = require('../model/ProductModel');
+const { getProductsByStoreId, getProductById } = require('../model/ProductModel');
 const { createOrder, getOrdersByUserId } = require('../model/OrderModel');
 
 const viewStores = async () => {
@@ -9,6 +9,10 @@ const viewStores = async () => {
 
 const viewProductsByStore = async (storeId) => {
   return await getProductsByStoreId(storeId);
+};
+
+const getProductByIdForBuyer = async (productId) => {
+  return await getProductById(productId);
 };
 
 const placeOrder = async (order) => {
@@ -24,4 +28,5 @@ module.exports = {
   viewProductsByStore,
   placeOrder,
   getBuyerOrders,
+  getProductByIdForBuyer
 };

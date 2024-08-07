@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post('/store', createStore);
 router.post('/product', createProduct);
+router.post('/product', createProduct);
 router.get('/store/:storeId/products', getProducts);
 router.get('/store', getAllStore);
 

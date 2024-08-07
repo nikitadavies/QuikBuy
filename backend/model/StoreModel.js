@@ -52,8 +52,25 @@ const getStores = async () => {
     TableName: TABLE_NAME,
   };
   const result = await docClient.scan(params).promise();
-  return result.Items;
+  const stores = result.Items;
+
+  // Generate pre-signed URLs for each store image
+  for (let store of stores) {
+    if (store.imageUrl) {
+      const imageKey = store.imageUrl.split('/').pop();
+      const urlParams = {
+        Bucket: "quikbuy-bucket",
+        Key: `store-images/${imageKey}`,
+        Expires: 60 * 60 // URL expiration time in seconds
+      };
+      const imageUrl = s3.getSignedUrl('getObject', urlParams);
+      store.imageUrl = imageUrl;
+    }
+  }
+
+  return stores;
 };
+
 
 module.exports = {
   createStore,

@@ -66,13 +66,13 @@ function CreateStore() {
             />
           </div>
           <div>
-        <label>
+        <label style={styles.label}>
           Upload Store Image:
           <input type="file" accept="image/*" onChange={handleImageChange} />
         </label>
       </div>
           <div style={styles.buttonContainer}>
-            <button type="submit" style={styles.saveButton}>
+            <button type="submit"  className="btn btn-primary w-100" style={{backgroundColor: "#1A2529", border: "none"}}>
               Create Store
             </button>
           </div>
@@ -81,10 +81,10 @@ function CreateStore() {
     
   return (
     <>
-      <div className="hero-section">
+      <div className="hero-section" style={{height: "100vh"}}>
         <div class="header">
         <div className="hero-text">
-      <h1>Create Store</h1>
+      <h1>Create Your Store</h1>
     </div>
         </div>
     <div className="hero-image">
