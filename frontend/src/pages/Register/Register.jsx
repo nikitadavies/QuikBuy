@@ -22,6 +22,7 @@ function Register() {
     e.preventDefault();
     try {
       setIsLoading(true);
+      localStorage.setItem("email", formData.email);
       const response = await api.auth.register({
         email: formData.email,
         firstName: formData.firstName,

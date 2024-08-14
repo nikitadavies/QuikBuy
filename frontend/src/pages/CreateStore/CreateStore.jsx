@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import TopStores from '../../components/TopStores/TopStores';
 import api from "../../api/index";
+import { ToastContainer, toast } from "react-toastify";
+import {useNavigate } from "react-router-dom";
 
 function CreateStore() {
   const [store, setStoreData] = useState();
   const [image, setImage] = useState(null);
+
+  const navigate = useNavigate();
 
 
   const handleImageChange = (e) => {
@@ -30,6 +34,8 @@ function CreateStore() {
           image: base64Image,
         });
         console.log('Store created successfully:', response.data);
+        toast.success("Store created successfully!");
+        navigate("/home");
       } catch (error) {
         console.error('Error creating store:', error);
       }
@@ -81,6 +87,7 @@ function CreateStore() {
     
   return (
     <>
+     <ToastContainer />
       <div className="hero-section" style={{height: "100vh"}}>
         <div class="header">
         <div className="hero-text">

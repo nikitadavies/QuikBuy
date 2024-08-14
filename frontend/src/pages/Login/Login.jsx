@@ -15,6 +15,7 @@ function Login() {
     try {
       setIsLoading(true);
       const response = await api.auth.login({ email, password });
+      localStorage.setItem("email", email);
 
       if (response) {
         setIsLoading(false);

@@ -70,8 +70,6 @@ function ProductDetail() {
             body: JSON.stringify(params),
           }
         );
-        const data = await response.json();
-
         navigate("/home");
       }
     } catch (error) {

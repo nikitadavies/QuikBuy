@@ -43,6 +43,8 @@ const product = {
             image: base64Image,
         });
         console.log('Product created successfully:', response.data);
+        toast.success("Store created successfully!");
+        navigate("/home");
       } catch (error) {
         console.error('Error creating store:', error);
       }
