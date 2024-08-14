@@ -99,10 +99,34 @@ const getProductById = async (productId) => {
   }
 };
 
+const getAllProducts = async () => {
+  const params = {
+    TableName: TABLE_NAME,
+  };
+  const result = await docClient.scan(params).promise();
+  const products = result.Items;
+
+  // Generate pre-signed URLs for each store image
+  for (let product of products) {
+    if (product.imageUrl) {
+      const imageKey = product.imageUrl.split('/').pop();
+      const urlParams = {
+        Bucket: "quikbuy-bucket",
+        Key: `product-images/${product.storeId}/${imageKey}`,
+        Expires: 60 * 60 // URL expiration time in seconds
+      };
+      const imageUrl = s3.getSignedUrl('getObject', urlParams);
+      product.imageUrl = imageUrl;
+    }
+  }
+
+  return products;
+};
 
 module.exports = {
   createProduct,
   getProductsByStoreId,
   getProductById,
+  getAllProducts,
   init
 };

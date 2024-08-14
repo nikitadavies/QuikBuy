@@ -2,9 +2,16 @@
 const AWS = require('aws-sdk');
 const { v4: uuidv4 } = require('uuid');
 
-const docClient = new AWS.DynamoDB.DocumentClient();
 
 const TABLE_NAME = 'Orders';
+
+let docClient;
+let s3;
+
+const init = (services) => {
+  docClient = services.docClient;
+  s3 = services.s3;
+};
 
 const createOrder = async (order) => {
   order.orderId = uuidv4();
@@ -32,4 +39,5 @@ const getOrdersByUserId = async (userId) => {
 module.exports = {
   createOrder,
   getOrdersByUserId,
+  init
 };

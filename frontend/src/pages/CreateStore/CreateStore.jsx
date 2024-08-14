@@ -74,7 +74,7 @@ function CreateStore() {
           <div style={styles.buttonContainer}>
             <button type="submit"  className="btn btn-primary w-100" style={{backgroundColor: "#1A2529", border: "none"}}>
               Create Store
-            </button>
+            </button> 
           </div>
         </form>
       );

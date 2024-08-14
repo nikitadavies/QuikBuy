@@ -12,6 +12,7 @@ function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const [quantity, setQuantity] = useState(1);
+  const emailId = JSON.parse(localStorage.getItem("userData"))?.email;
 
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
@@ -54,10 +55,22 @@ function ProductDetail() {
         productId: id,
         quantity: quantity,
         orderPaymentMethod: "Cash on Demand",
-        userId: "e1f69722-1b9c-4a68-83a3-14797756f51c"
+        userId: JSON.parse(localStorage.getItem("userData"))?.userId
       });
       if (response) {
         toast.success("Order confirmed successfully!");
+        const params = { emailId, product };
+        const response = await fetch(
+          "https://wfvot37zu3.execute-api.us-east-1.amazonaws.com/dev/send-notifications",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(params),
+          }
+        );
+        const data = await response.json();
 
         navigate("/home");
       }
@@ -159,9 +172,6 @@ function ProductDetail() {
                       >
                         Buy now
                       </button>
-
-                     
-                
                 </div>
               </div>
             </div>

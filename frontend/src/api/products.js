@@ -5,7 +5,7 @@ import * as api from "./utils";
  */
 export async function getProducts() {
     try {
-      const response = await api.get("/products/");
+      const response = await api.get("/buyer/products/");
       return response;
     } catch (error) {
       throw error;
@@ -34,7 +34,7 @@ export async function getProducts() {
 
   export async function placeOrder(payload) {
     try {
-      const response = await api.post("/order", payload);
+      const response = await api.post("/buyer/order", payload);
       return response;
     } catch (error) {
       console.error("eee", error);

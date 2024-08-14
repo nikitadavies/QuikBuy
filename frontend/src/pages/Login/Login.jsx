@@ -20,7 +20,7 @@ function Login() {
         setIsLoading(false);
         // Store tokens in local storage
         localStorage.setItem("token", response.token);
-        navigate("/home");
+        navigate("/home", {state: email});
       }
     } catch (error) {
       setIsLoading(false);

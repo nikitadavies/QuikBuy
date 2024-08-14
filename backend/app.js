@@ -11,6 +11,7 @@ const storeModel = require('./model/StoreModel');
 const userModel = require('./model/UserModel');
 const authService = require("./service/AuthService");
 const productModel = require("./model/ProductModel");
+const orderModel = require("./model/OrderModel");
 
 const app = express();
  // Enable CORS
@@ -40,6 +41,7 @@ storeModel.init({ s3, docClient });
 userModel.init({  docClient });
 authService.init({cognito, clientId});
 productModel.init({s3, docClient});
+orderModel.init({s3, docClient});
 
 
     // Your application setup (middlewares, routes, etc.)

@@ -30,3 +30,12 @@ export async function login(payload) {
       throw error;
     }
   }
+
+  export async function getUserDetails(emailId) {
+    try {
+      const response = await api.get(`/auth/users/${emailId}`);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }

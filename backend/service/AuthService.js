@@ -59,9 +59,14 @@ const login = async (email, password) => {
   return { token };
 };
 
+const getUserByEmailDetail = async (emailId) => {
+  return await getUserByEmail(emailId);
+};
+
 module.exports = {
   register,
   login,
   confirmUser,
+  getUserByEmailDetail,
   init
 };
